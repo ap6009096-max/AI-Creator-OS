@@ -1,6 +1,7 @@
 # AI Creator OS
 
-**AI Creator OS — A Multi-Agent Content Production Platform** that transforms ideas, videos, podcasts, and scripts into complete production-ready content packages using a coordinated team of AI employees.
+**AI Creator OS — A AI Operating System for Video Production** that transforms ideas, videos, podcasts, and scripts into complete production-ready content by coordinating a central Supervisor Agent and a team of specialized AI agents.
+
 
 **Powered by** `Gemini` · `LangGraph` · `LangChain` · `Parallel Search API` · `FFmpeg` · `OpenCV` · `Whisper` · `Docker` · `Streamlit`
 
