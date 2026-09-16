@@ -4,7 +4,8 @@ Video production is fragmented across many tools and requires creators to manual
 
 **AI Video OS** uses a central Supervisor Agent and specialized AI agents to understand the goal, plan the workflow, execute multiple production tasks, monitor progress, and deliver finished content. The goal is to make professional video production faster, more coordinated, and accessible from one platform.
 
-**AI Creator OS — A Multi-Agent Content Production Platform** that transforms ideas, videos, podcasts, and scripts into complete production-ready content packages using a coordinated team of AI employees.
+**AI Creator OS — A AI Operating System for Video Production** that transforms ideas, videos, podcasts, and scripts into complete production-ready content by coordinating a central Supervisor Agent and a team of specialized AI agents.
+
 
 **Powered by** `Gemini` · `LangGraph` · `LangChain` · `Parallel Search API` · `FFmpeg` · `OpenCV` · `Whisper` · `Docker` · `Streamlit`
 
