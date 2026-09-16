@@ -1,8 +1,18 @@
 # AI Creator OS
 
+Video production is fragmented across many tools and requires creators to manually manage research, scripting, visuals, audio, editing, captions, localization, and optimization. I wanted to solve this by building an operating system that coordinates the entire production process instead of handling only one task.
+
+**AI Video OS** uses a central Supervisor Agent and specialized AI agents to understand the goal, plan the workflow, execute multiple production tasks, monitor progress, and deliver finished content. The goal is to make professional video production faster, more coordinated, and accessible from one platform.
+
 **AI Creator OS — A Multi-Agent Content Production Platform** that transforms ideas, videos, podcasts, and scripts into complete production-ready content packages using a coordinated team of AI employees.
 
 **Powered by** `Gemini` · `LangGraph` · `LangChain` · `Parallel Search API` · `FFmpeg` · `OpenCV` · `Whisper` · `Docker` · `Streamlit`
+
+## Why build this platform?
+
+Most creators and teams still work with disconnected tools for research, scripting, editing, captions, localization, and publishing. That fragmentation slows down production, increases manual work, and makes it hard to maintain quality at scale.
+
+AI Creator OS brings those steps into one system so the workflow is coordinated instead of fragmented. The platform is designed to help creators move from raw idea to production-ready content with less friction, faster iteration, and more consistent output across channels.
 
 ## Creator journey
 
@@ -12,11 +22,11 @@ The product UI follows a creator-first path (agents stay visible under **Agent W
 Create → Understand → Research → Plan → Approve → Produce → Review → Export
 ```
 
-1. **New Video** — one primary input (YouTube / Upload / Script / Idea) + quick settings; advanced controls stay collapsed  
-2. **Pipeline** — seven-stage production checklist + live agent activity  
-3. **Production Plan** — content detected + human-in-the-loop **Approve & Create** gate after storyboard  
-4. **Storyboard** — scene cards (edit & save)  
-5. **Preview / Export** — deliverables and project exports  
+1. **New Video** — one primary input (YouTube / Upload / Script / Idea) + quick settings; advanced controls stay collapsed
+2. **Pipeline** — seven-stage production checklist + live agent activity
+3. **Production Plan** — content detected + human-in-the-loop **Approve & Create** gate after storyboard
+4. **Storyboard** — scene cards (edit & save)
+5. **Preview / Export** — deliverables and project exports
 
 Phase A stops after storyboard (`run_video_workflow_until_plan`); Phase B resumes through localization, render, quality, analytics, and export (`run_video_workflow_from_plan`).
 
@@ -250,7 +260,6 @@ See [`.env.example`](.env.example). Common keys:
 ### Docker
 
 ```bash
-
 # macOS/Linux: -v "$PWD/outputs:/app/outputs"
 ```
 
@@ -290,5 +299,3 @@ pytest -m integration   # needs FFmpeg for fixture media path
 ---
 
 The result is a cloud-native AI Creator Operating System capable of transforming ideas, experiences, scripts, videos, podcasts, and YouTube content into structured video productions through a coordinated multi-agent workflow powered by Google Cloud and Gemini.
-#   A I - C r e a t o r - O S  
- 
