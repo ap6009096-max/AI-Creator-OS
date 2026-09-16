@@ -1,0 +1,290 @@
+2026-09-14 06:48:17 | ERROR    | tools.llm.gemini | Gemini script analysis failed
+Traceback (most recent call last):
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 4177, in _generate
+    response: GenerateContentResponse = self.client.models.generate_content(
+                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        **request,
+        ^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\google\genai\models.py", line 6270, in generate_content
+    response = self._generate_content(
+        model=model, contents=contents, config=parsed_config_to_call
+    )
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\google\genai\models.py", line 4707, in _generate_content
+    response = self._api_client.request(
+        'post', path, request_dict, http_options
+    )
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\google\genai\_api_client.py", line 1750, in request
+    response = self._request(http_request, http_options, stream=False)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\google\genai\_api_client.py", line 1535, in _request
+    return retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\tenacity\__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\concurrent\futures\_base.py", line 447, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\concurrent\futures\_base.py", line 396, in __get_result
+    raise self._exception
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\google\genai\_api_client.py", line 1514, in _request_once
+    errors.APIError.raise_for_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\google\genai\errors.py", line 173, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\google\genai\errors.py", line 202, in raise_error
+    raise ClientError(status_code, response_json, response)
+google.genai.errors.ClientError: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\tools\llm\gemini.py", line 94, in analyze_script_structure
+    result = structured.invoke(
+        [
+    ...<2 lines>...
+        ]
+    )
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\langchain_core\runnables\base.py", line 3454, in invoke
+    input_ = context.run(step.invoke, input_, config, **kwargs)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\langchain_core\runnables\base.py", line 6014, in invoke
+    return self.bound.invoke(
+           ~~~~~~~~~~~~~~~~~^
+        input,
+        ^^^^^^
+        self._merge_configs(config),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **{**self.kwargs, **kwargs},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 3578, in invoke
+    return super().invoke(input, config, stop=stop, **kwargs)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 488, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1877, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1684, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 2022, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 4181, in _generate
+    _handle_client_error(e, request)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 326, in _handle_client_error
+    raise error_type(msg) from e
+langchain_google_genai.chat_models.GoogleInvalidRequestError: Error calling model 'gemini-2.0-flash' (INVALID_ARGUMENT): 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}
+2026-09-14 06:59:50 | ERROR    | asyncio | Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\proactor_events.py", line 166, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2026-09-14 08:51:59 | ERROR    | tools.whisper.transcribe | Whisper transcription failed
+Traceback (most recent call last):
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\tools\whisper\transcribe.py", line 97, in transcribe_media
+    model = load_whisper_model(name)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\tools\whisper\transcribe.py", line 22, in load_whisper_model
+    import whisper  # type: ignore
+    ^^^^^^^^^^^^^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\whisper\__init__.py", line 8, in <module>
+    import torch
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\torch\__init__.py", line 309, in <module>
+    _load_dll_libraries()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\torch\__init__.py", line 292, in _load_dll_libraries
+    raise err
+OSError: [WinError 4551] An Application Control policy has blocked this file. Error loading "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\torch\lib\shm.dll" or one of its dependencies.
+2026-09-14 08:52:14 | ERROR    | tools.whisper.transcribe | Whisper transcription failed
+Traceback (most recent call last):
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\tools\whisper\transcribe.py", line 97, in transcribe_media
+    model = load_whisper_model(name)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\tools\whisper\transcribe.py", line 22, in load_whisper_model
+    import whisper  # type: ignore
+    ^^^^^^^^^^^^^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\whisper\__init__.py", line 8, in <module>
+    import torch
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\torch\__init__.py", line 309, in <module>
+    _load_dll_libraries()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\torch\__init__.py", line 292, in _load_dll_libraries
+    raise err
+OSError: [WinError 4551] An Application Control policy has blocked this file. Error loading "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\torch\lib\shm.dll" or one of its dependencies.
+2026-09-15 07:07:41 | ERROR    | tools.whisper.transcribe | Whisper transcription failed
+Traceback (most recent call last):
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\tools\whisper\transcribe.py", line 107, in transcribe_media
+    model = load_whisper_model(name)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\tools\whisper\transcribe.py", line 22, in load_whisper_model
+    import whisper  # type: ignore
+    ^^^^^^^^^^^^^^
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\whisper\__init__.py", line 13, in <module>
+    from .model import ModelDimensions, Whisper
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\whisper\model.py", line 14, in <module>
+    from .transcribe import transcribe as transcribe_function
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\whisper\transcribe.py", line 21, in <module>
+    from .timing import add_word_timestamps
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\whisper\timing.py", line 7, in <module>
+    import numba
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\__init__.py", line 74, in <module>
+    from numba.core import types, errors
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\core\types\__init__.py", line 8, in <module>
+    from .containers import *
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\core\types\containers.py", line 23, in <module>
+    from .misc import Undefined, unliteral, Optional, NoneType
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\core\types\misc.py", line 6, in <module>
+    from numba.core.ir import UndefinedType
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\core\ir.py", line 22, in <module>
+    _termcolor = errors.termcolor()
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\core\errors.py", line 395, in termcolor
+    scheme = themes[numba.core.config.COLOR_SCHEME]
+                    ^^^^^^^^^^
+AttributeError: partially initialized module 'numba' from 'C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\__init__.py' has no attribute 'core' (most likely due to a circular import)
+2026-09-15 07:10:37 | ERROR    | tools.whisper.transcribe | Whisper transcription failed
+Traceback (most recent call last):
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\tools\whisper\transcribe.py", line 107, in transcribe_media
+    model = load_whisper_model(name)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\tools\whisper\transcribe.py", line 22, in load_whisper_model
+    import whisper  # type: ignore
+    ^^^^^^^^^^^^^^
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\whisper\__init__.py", line 13, in <module>
+    from .model import ModelDimensions, Whisper
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\whisper\model.py", line 14, in <module>
+    from .transcribe import transcribe as transcribe_function
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\whisper\transcribe.py", line 21, in <module>
+    from .timing import add_word_timestamps
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\whisper\timing.py", line 7, in <module>
+    import numba
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\__init__.py", line 74, in <module>
+    from numba.core import types, errors
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\core\types\__init__.py", line 8, in <module>
+    from .containers import *
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\core\types\containers.py", line 23, in <module>
+    from .misc import Undefined, unliteral, Optional, NoneType
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\core\types\misc.py", line 6, in <module>
+    from numba.core.ir import UndefinedType
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\core\ir.py", line 22, in <module>
+    _termcolor = errors.termcolor()
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\core\errors.py", line 395, in termcolor
+    scheme = themes[numba.core.config.COLOR_SCHEME]
+                    ^^^^^^^^^^
+AttributeError: module 'numba' has no attribute 'core'
+2026-09-15 07:10:49 | ERROR    | tools.whisper.transcribe | Whisper transcription failed
+Traceback (most recent call last):
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\tools\whisper\transcribe.py", line 107, in transcribe_media
+    model = load_whisper_model(name)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\tools\whisper\transcribe.py", line 22, in load_whisper_model
+    import whisper  # type: ignore
+    ^^^^^^^^^^^^^^
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\whisper\__init__.py", line 13, in <module>
+    from .model import ModelDimensions, Whisper
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\whisper\model.py", line 14, in <module>
+    from .transcribe import transcribe as transcribe_function
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\whisper\transcribe.py", line 21, in <module>
+    from .timing import add_word_timestamps
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\whisper\timing.py", line 7, in <module>
+    import numba
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\__init__.py", line 74, in <module>
+    from numba.core import types, errors
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\core\types\__init__.py", line 8, in <module>
+    from .containers import *
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\core\types\containers.py", line 23, in <module>
+    from .misc import Undefined, unliteral, Optional, NoneType
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\core\types\misc.py", line 6, in <module>
+    from numba.core.ir import UndefinedType
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\core\ir.py", line 22, in <module>
+    _termcolor = errors.termcolor()
+  File "C:\Users\pk129\AppData\Roaming\Python\Python314\site-packages\numba\core\errors.py", line 395, in termcolor
+    scheme = themes[numba.core.config.COLOR_SCHEME]
+                    ^^^^^^^^^^
+AttributeError: module 'numba' has no attribute 'core'
+2026-09-15 08:05:33 | ERROR    | tools.whisper.transcribe | Whisper transcription failed
+Traceback (most recent call last):
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\tools\whisper\transcribe.py", line 108, in transcribe_media
+    raw = model.transcribe(str(path), word_timestamps=word_timestamps, verbose=False)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\whisper\transcribe.py", line 295, in transcribe
+    result: DecodingResult = decode_with_fallback(mel_segment)
+                             ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\whisper\transcribe.py", line 201, in decode_with_fallback
+    decode_result = model.decode(segment, options)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\whisper\decoding.py", line 824, in decode
+    result = DecodingTask(model, options).run(mel)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\whisper\decoding.py", line 737, in run
+    tokens, sum_logprobs, no_speech_probs = self._main_loop(audio_features, tokens)
+                                            ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\whisper\decoding.py", line 687, in _main_loop
+    logits = self.inference.logits(tokens, audio_features)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\whisper\decoding.py", line 163, in logits
+    return self.model.decoder(tokens, audio_features, kv_cache=self.kv_cache)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\whisper\model.py", line 242, in forward
+    x = block(x, xa, mask=self.mask, kv_cache=kv_cache)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\whisper\model.py", line 167, in forward
+    x = x + self.attn(self.attn_ln(x), mask=mask, kv_cache=kv_cache)[0]
+            ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\whisper\model.py", line 111, in forward
+    wv, qk = self.qkv_attention(q, k, v, mask)
+             ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pk129\OneDrive\Desktop\video make agent - 2nd - Copy\ai-video-agent\.venv\Lib\site-packages\whisper\model.py", line 119, in qkv_attention
+    q = q.view(*q.shape[:2], self.n_head, -1).permute(0, 2, 1, 3)
+        ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: cannot reshape tensor of 0 elements into shape [1, 0, 8, -1] because the unspecified dimension size -1 can be any value and is ambiguous
+2026-09-15 08:23:58 | ERROR    | asyncio | Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\proactor_events.py", line 166, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
